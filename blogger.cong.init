@@ -1,0 +1,12 @@
+description "myapp"
+
+start on (filesystem)
+stop on runlevel [016]
+
+respawn
+console log
+setuid nobody
+setgid nogroup
+chdir /bloggr/
+
+exec /bloggr/env/bin/gunicorn --access-logfile - --error-logfile - -b 127.0.0.1:5000 bloggr:app
