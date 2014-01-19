@@ -14,7 +14,7 @@ conn = MySQLdb.connect (host = "localhost",
                         user = "root",
                         passwd = "***REMOVED***",
                         db = "blog")
-cur = conn.cursor()
+#cur = conn.cursor()
 
 # create our little application
 app = Flask(__name__)
@@ -26,7 +26,7 @@ def query_db(query):
 
 @app.before_request
 def before_request():
-	g.db = connect_db()
+	g.db = conn.cursor()
 
 @app.teardown_request
 def teardown_request(exception):
