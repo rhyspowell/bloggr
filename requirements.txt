@@ -1,3 +1,4 @@
+MySQLdb
 flask
 gunicorn
 gevent

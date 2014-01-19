@@ -1,27 +1,28 @@
 # all the imports
-import sqlite3
+#import sqlite3
+import MySQLdb
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from contextlib import closing
 
 #configuration
-DATABASE = '/tmp/bloggr.db'
 DEBUG = True
 SECRET_KEY = '\xa2\xab\x9c\x02\xaf\x8d\xb2^\x11R\n8\xed\xbf\xe4\xe2\x9cM@\xca\xc0\x1d\x95\x92'
 USERNAME = 'admin'
 PASSWORD = 'default'
 
+conn = MySQLdb.connect (host = "localhost",
+                        user = "root",
+                        passwd = "***REMOVED***",
+                        db = "blog")
+cur = conn.cursor()
+
 # create our little application
 app = Flask(__name__)
 app.config.from_object(__name__)
 
-def connect_db():
-	return sqlite3.connect(app.config['DATABASE'])
+def query_db(query):
+	return curr.execute(query)
 
-def init_db():
-	with closing(connect_db()) as db:
-		with app.open_resource('schema.sql', mode='r') as f:
-			db.cursor().executescript(f.read())
-		db.commit()
 
 @app.before_request
 def before_request():
