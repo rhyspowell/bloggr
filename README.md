@@ -6,6 +6,7 @@ website blog built in flask
 Install
 =======
 
+All non app files can be found in the tools folder
 Install all the packages in the apt-get file
 run pip install virtualenv
 change to the directory that you have pulled the code into and then run
