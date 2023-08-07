@@ -12,7 +12,7 @@ PASSWORD = 'default'
 
 conn = MySQLdb.connect (host = "localhost",
                         user = "root",
-                        passwd = "***REMOVED***",
+                        passwd = "password",
                         db = "blog")
 #cur = conn.cursor()
 
